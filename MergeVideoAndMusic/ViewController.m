@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
 }
 
 - (IBAction)mergeAction:(UIButton *)sender {
@@ -33,9 +33,11 @@
     NSString *documents = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     // 声音来源
     NSURL *audioInputUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"五环之歌" ofType:@"mp3"]];
+    NSURL *audioInputUrl2 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"郑智化-水手" ofType:@"mp3"]];
+    
     // 视频来源
-    NSURL *videoInputUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"myPlayer" ofType:@"mp4"]];
-
+    NSURL *videoInputUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"动起来" ofType:@"mp4"]];
+    
     // 最终合成输出路径
     NSString *outPutFilePath = [documents stringByAppendingPathComponent:@"merge.mp4"];
     // 添加合成路径
@@ -58,17 +60,39 @@
     [videoTrack insertTimeRange:videoTimeRange ofTrack:videoAssetTrack atTime:nextClistartTime error:nil];
     
     
-   
+    
     // 声音采集
     AVURLAsset *audioAsset = [[AVURLAsset alloc] initWithURL:audioInputUrl options:nil];
     // 因为视频短这里就直接用视频长度了,如果自动化需要自己写判断
-    CMTimeRange audioTimeRange = videoTimeRange;
+    CMTimeRange audioTimeRange =  CMTimeRangeMake(kCMTimeZero, audioAsset.duration);//videoTimeRange;
     // 音频通道
     AVMutableCompositionTrack *audioTrack = [comosition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
     // 音频采集通道
     AVAssetTrack *audioAssetTrack = [[audioAsset tracksWithMediaType:AVMediaTypeAudio] firstObject];
+    
+    
+    
+    // 声音采集2
+    AVURLAsset *audioAsset2 = [[AVURLAsset alloc] initWithURL:audioInputUrl2 options:nil];
+    // 因为视频短这里就直接用视频长度了,如果自动化需要自己写判断 , 注: 如果两个音频接着播放的得,得考虑 两个长度问题, 这个会以长的做节点, 自己计算基准事件和音频时间
+    
+    CMTime aduioTime2 =  audioAsset2.duration;//CMTimeMake(videoAsset.duration.value - audioAsset.duration.value, audioAsset2.duration.timescale);
+    CMTimeRange audioTimeRange2 = CMTimeRangeMake(kCMTimeZero, aduioTime2);//videoTimeRange;
+    // 音频通道
+    AVMutableCompositionTrack *audioTrack2 = [comosition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+    // 音频采集通道
+    AVAssetTrack *audioAssetTrack2 = [[audioAsset2 tracksWithMediaType:AVMediaTypeAudio] firstObject];
+    
+    
+    
     // 加入合成轨道之中
     [audioTrack insertTimeRange:audioTimeRange ofTrack:audioAssetTrack atTime:nextClistartTime error:nil];
+    // 多音轨混音
+    [audioTrack2 insertTimeRange:audioTimeRange2 ofTrack:audioAssetTrack2 atTime:nextClistartTime error:nil];
+    
+    // 单音轨,多音乐
+      //  [audioTrack insertTimeRanges:@[[NSValue valueWithCMTimeRange:audioTimeRange],[NSValue valueWithCMTimeRange:audioTimeRange2]] ofTracks:@[audioAssetTrack,audioAssetTrack2] atTime:nextClistartTime error:nil];
+    
     
     // 创建一个输出
     AVAssetExportSession *assetExport = [[AVAssetExportSession alloc] initWithAsset:comosition presetName:AVAssetExportPresetMediumQuality];

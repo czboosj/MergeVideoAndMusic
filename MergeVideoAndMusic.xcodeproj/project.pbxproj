@@ -18,6 +18,8 @@
 		52F9CE8F1C1009D400858C7C /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F9CE8B1C1009D400858C7C /* MBProgressHUD+MJ.m */; };
 		52F9CE901C1009D400858C7C /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52F9CE8C1C1009D400858C7C /* MBProgressHUD.bundle */; };
 		52F9CE911C1009D400858C7C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F9CE8E1C1009D400858C7C /* MBProgressHUD.m */; };
+		61503F0C1DB7283C004B9A86 /* 动起来.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61503F0A1DB7283C004B9A86 /* 动起来.mp4 */; };
+		61503F0D1DB7283C004B9A86 /* 郑智化-水手.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61503F0B1DB7283C004B9A86 /* 郑智化-水手.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		52F9CE8C1C1009D400858C7C /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		52F9CE8D1C1009D400858C7C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		52F9CE8E1C1009D400858C7C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		61503F0A1DB7283C004B9A86 /* 动起来.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "动起来.mp4"; sourceTree = "<group>"; };
+		61503F0B1DB7283C004B9A86 /* 郑智化-水手.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "郑智化-水手.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				52F9CE891C1009D400858C7C /* MBProgressHUD */,
 				52F9CE871C0FEF6900858C7C /* myPlayer.mp4 */,
 				52F9CE841C0FD29500858C7C /* 五环之歌.mp3 */,
+				61503F0A1DB7283C004B9A86 /* 动起来.mp4 */,
+				61503F0B1DB7283C004B9A86 /* 郑智化-水手.mp3 */,
 				52F9CE731C0FCE4D00858C7C /* ViewController.h */,
 				52F9CE741C0FCE4D00858C7C /* ViewController.m */,
 				52F9CE761C0FCE4D00858C7C /* Main.storyboard */,
@@ -137,6 +143,8 @@
 				TargetAttributes = {
 					52F9CE691C0FCE4D00858C7C = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = VZA4V5RJLK;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -164,9 +172,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				52F9CE851C0FD29500858C7C /* 五环之歌.mp3 in Resources */,
+				61503F0C1DB7283C004B9A86 /* 动起来.mp4 in Resources */,
 				52F9CE7D1C0FCE4D00858C7C /* LaunchScreen.storyboard in Resources */,
 				52F9CE881C0FEF6900858C7C /* myPlayer.mp4 in Resources */,
 				52F9CE7A1C0FCE4D00858C7C /* Assets.xcassets in Resources */,
+				61503F0D1DB7283C004B9A86 /* 郑智化-水手.mp3 in Resources */,
 				52F9CE781C0FCE4D00858C7C /* Main.storyboard in Resources */,
 				52F9CE901C1009D400858C7C /* MBProgressHUD.bundle in Resources */,
 			);
@@ -293,10 +303,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VZA4V5RJLK;
 				INFOPLIST_FILE = MergeVideoAndMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = huchunyuan.MergeVideoAndMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bfb8c7e2-4b80-490e-9ef7-623ef91fbdd7";
+				PROVISIONING_PROFILE_SPECIFIER = "Xcode iOS Wildcard App ID *";
 			};
 			name = Debug;
 		};
@@ -304,10 +317,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VZA4V5RJLK;
 				INFOPLIST_FILE = MergeVideoAndMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = huchunyuan.MergeVideoAndMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bfb8c7e2-4b80-490e-9ef7-623ef91fbdd7";
+				PROVISIONING_PROFILE_SPECIFIER = "Xcode iOS Wildcard App ID *";
 			};
 			name = Release;
 		};
@@ -330,6 +346,7 @@
 				52F9CE831C0FCE4D00858C7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
